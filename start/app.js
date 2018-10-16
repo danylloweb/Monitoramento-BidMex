@@ -15,10 +15,8 @@ const providers = [
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
-  '@adonisjs/lucid/providers/LucidProvider',
-  'adonis-lucid-mongodb/providers/DatabaseProvider',
-  'adonis-lucid-mongodb/providers/LucidMongoProvider',
-  'adonis-lucid-mongodb/providers/FactoryProvider'
+  'lucid-mongo/providers/LucidMongoProvider'
+
 ]
 
 /*
@@ -31,11 +29,7 @@ const providers = [
 |
 */
 const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider',
-  'adonis-lucid-mongodb/providers/CommandsProvider',
-  'adonis-lucid-mongodb/providers/MigrationsProvider',
-  'adonis-lucid-mongodb/providers/SchemaProvider',
-  'adonis-lucid-mongodb/providers/SeederProvider'
+  'lucid-mongo/providers/MigrationsProvider'
 ]
 
 /*
@@ -50,13 +44,7 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {
-  Database: 'Adonis/Src/Database',
-  Lucid: 'Adonis/Src/LucidMongo',
-  Schema: 'Adonis/Src/Schema',
-  Migrations: 'Adonis/Src/Migrations',
-  Factory: 'Adonis/Src/Factory'
-}
+const aliases = {}
 
 /*
 |--------------------------------------------------------------------------

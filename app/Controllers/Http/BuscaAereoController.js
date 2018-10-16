@@ -1,5 +1,6 @@
 'use strict'
 const client = use('request-promise');
+const User = use('App/Models/User');
 /**
  * BuscaAereoController
  */
@@ -26,6 +27,24 @@ class BuscaAereoController {
 
         } catch (e) {
             return response.json({error: true, message: 'Offline'});
+        }
+    }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @returns {*}
+     */
+    async createIssue({ request, response }){
+        try {
+            const user = new User
+            user.username = 'danyllo'
+            await user.save();
+            return User.fetch();
+
+        } catch (e) {
+            return response.json({error: true, message: 'error de jocelio'});
         }
     }
 }

@@ -8,3 +8,4 @@ Route.get('/', ({ request }) => {
 });
 Route.get('/test/buscador','BuscaAereoController.index');
 Route.get('/test/crawler','CrawlerController.index');
+Route.get('/test/user','BuscaAereoController.createIssue');
