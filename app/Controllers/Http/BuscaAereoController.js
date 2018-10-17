@@ -40,6 +40,7 @@ class BuscaAereoController {
         try {
             const user = new User
             user.username = 'danyllo'
+            user.password = 'elo165'
             await user.save();
             return User.fetch();
 
