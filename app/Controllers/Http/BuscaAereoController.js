@@ -1,17 +1,18 @@
-'use strict'
+'use strict';
 const client = use('request-promise');
-const User = use('App/Models/User');
+
 /**
+ * class
  * BuscaAereoController
  */
 class BuscaAereoController {
 
     /**
-     * index
+     * GatewayBuscador
      * @param response
      * @returns {*|{limit, strict, types}|void}
      */
-    async index ({ response }) {
+    async GatewayBuscador ({ response }) {
 
         try {
             let body = await client({
@@ -31,23 +32,29 @@ class BuscaAereoController {
     }
 
     /**
-     *
-     * @param request
+     * GatewayManager
      * @param response
-     * @returns {*}
+     * @returns {*|{limit, strict, types}|void}
      */
-    async createIssue({ request, response }){
+    async GatewayManager ({ response }) {
+
         try {
-            const user = new User
-            user.username = 'danyllo'
-            user.password = 'elo165'
-            await user.save();
-            return User.fetch();
+            let body = await client({
+                url: 'https://gateway-manager.buscaaereo.com.br/psv/airports',
+                headers: {
+                    Accept: 'application/json'
+                },
+                method: 'GET'
+            });
+            body = JSON.parse(body);
+            let result = body.data ? {error: false, message: 'Online'} : {error: true, message: 'Offline'};
+            return response.json(result);
 
         } catch (e) {
-            return response.json({error: true, message: 'error de jocelio'});
+            return response.json({error: true, message: 'Offline'});
         }
     }
+    
 }
 
-module.exports = BuscaAereoController
+module.exports = BuscaAereoController;

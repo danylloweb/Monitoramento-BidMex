@@ -31,6 +31,50 @@ class AuthController {
         const token = await auth.attempt(email,password);
         return response.json(token);
     }
+
+    /**
+     * revokeToken
+     * @param response
+     * @param auth
+     */
+    async revokeToken ({response, auth}){
+        const apiToken = auth.getAuthHeader();
+
+        await auth
+            .authenticator('jwt')
+            .revokeTokens([apiToken]);
+        return response.json({error: false, message: 'user unauthenticated'});
+    }
+
+    /**
+     * revokeAllTokens
+     * @param response
+     * @param auth
+     * @returns {*|{limit, strict, types}|void}
+     */
+    async revokeAllTokens({response, auth}){
+        await auth
+            .authenticator('jwt')
+            .revokeTokens();
+        return response.json({error: false, message: 'all users unauthenticated'});
+    }
+
+    /**
+     * logout
+     * @param auth
+     */
+    async logout({auth}) {
+
+        const user = await auth.getUser();
+        try {
+            await auth
+                .authenticator('jwt')
+                .revokeTokensForUser(user);
+            return response.json({error: false, message: 'user unauthenticated'});
+        } catch (error) {
+            return response.json({error: false, message: 'unauthenticated'});
+        }
+    }
 }
 
 module.exports = AuthController;
