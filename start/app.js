@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,10 @@ const providers = [
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
   'lucid-mongo/providers/LucidMongoProvider',
-  '@adonisjs/framework/providers/ViewProvider'
-
-]
+  '@adonisjs/framework/providers/ViewProvider',
+  '@adonisjs/redis/providers/RedisProvider',
+  'adonis-cache/providers/CacheProvider'
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,9 @@ const providers = [
 |
 */
 const aceProviders = [
-  'lucid-mongo/providers/MigrationsProvider'
-]
+  'lucid-mongo/providers/MigrationsProvider',
+  'adonis-cache/providers/CommandsProvider'
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,9 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {}
+const aliases = {
+  Cache: 'Adonis/Addons/Cache'
+};
 
 /*
 |--------------------------------------------------------------------------

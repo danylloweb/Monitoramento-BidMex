@@ -1,5 +1,16 @@
 'use strict';
-const client = use('request-promise');
+const client   = use('request-promise');
+const Cache    = use('Cache');
+const Env      = use('Env');
+const authData = {
+    grant_type:   'password',
+    client_id:     Env.get('CLIENT_ID', '17'),
+    username:      Env.get('USERNAME', 'danylloferreira@mangue3.com'),
+    password:      Env.get('PASSWORD', 'elo1234*'),
+    client_secret: Env.get('CLIENT_SECRET', 'cbKFwsVBgkEDBkQVAOQw7dTTcgwYiCuB3lYCwuVH')
+};
+const url_buscador = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
+const url_manager  = Env.get('URL_API_GATEWAY_MANAGER', 'http://api.apigateway.test');
 
 /**
  * class
@@ -16,7 +27,7 @@ class BuscaAereoController {
 
         try {
             let body = await client({
-                url: 'https://gateway.buscaaereo.com.br/psv/airports',
+                url: url_buscador + '/psv/airports',
                 headers: {
                     Accept: 'application/json'
                 },
@@ -40,7 +51,7 @@ class BuscaAereoController {
 
         try {
             let body = await client({
-                url: 'https://gateway-manager.buscaaereo.com.br/psv/airports',
+                url:  url_manager + '/psv/airports',
                 headers: {
                     Accept: 'application/json'
                 },
@@ -54,7 +65,62 @@ class BuscaAereoController {
             return response.json({error: true, message: 'Offline'});
         }
     }
-    
+
+    /**
+     * usersLoggedIn
+     * @returns {*}
+     */
+     async usersLoggedIn () {
+        return await client({
+            method: 'get',
+            url: url_buscador + '/api/users/logged',
+            headers: {
+                Accept: 'application/json',
+                Authorization:  await this.accessToken()
+            },
+            json: true
+        });
+     }
+
+    /**
+     * lastLogin
+     * @param params
+     */
+    async lastLogin({ params }) {
+        return await client({
+            method: 'get',
+            url: url_buscador + '/api/users/getLastLogin/' + params.id,
+            headers: {
+                Accept: 'application/json',
+                Authorization:  await this.accessToken()
+            },
+            json: true
+        });
+    }
+
+    /**
+     * acessToken
+     * @returns {*}
+     */
+    async accessToken() {
+
+        try {
+           return await Cache.remember('token_', 72, async() => {
+                let access_api = await client({
+                    method: 'POST',
+                    url: url_buscador + '/oauth/token',
+                    body: authData,
+                    json: true,
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+                if (access_api.access_token) return 'Bearer ' + access_api.access_token;
+            });
+        } catch (e) {
+            return response.json({error: true, message: 'sem conexão com apiGateway'});
+        }
+    }
 }
 
 module.exports = BuscaAereoController;
