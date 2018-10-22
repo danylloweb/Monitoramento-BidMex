@@ -1,14 +1,7 @@
 'use strict';
-const client   = use('request-promise');
-const Cache    = use('Cache');
-const Env      = use('Env');
-const authData = {
-    grant_type:   'password',
-    client_id:     Env.get('CLIENT_ID', '17'),
-    username:      Env.get('USERNAME', 'danylloferreira@mangue3.com'),
-    password:      Env.get('PASSWORD', 'elo1234*'),
-    client_secret: Env.get('CLIENT_SECRET', 'cbKFwsVBgkEDBkQVAOQw7dTTcgwYiCuB3lYCwuVH')
-};
+const client       = use('request-promise');
+const Cache        = use('Cache');
+const Env          = use('Env');
 const url_buscador = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
 const url_manager  = Env.get('URL_API_GATEWAY_MANAGER', 'http://api.apigateway.test');
 
@@ -109,7 +102,7 @@ class BuscaAereoController {
                 let access_api = await client({
                     method: 'POST',
                     url: url_buscador + '/oauth/token',
-                    body: authData,
+                    body: await this.authParams(),
                     json: true,
                     headers: {
                         Accept: 'application/json'
@@ -120,6 +113,20 @@ class BuscaAereoController {
         } catch (e) {
             return response.json({error: true, message: 'sem conexão com apiGateway'});
         }
+    }
+
+    /**
+     * authParams
+     * @returns {{grant_type: string, client_id: *, username: *, password: *, client_secret: *}}
+     */
+    async authParams() {
+        return await {
+            grant_type:   'password',
+            client_id:     Env.get('CLIENT_ID', '17'),
+            username:      Env.get('USERNAME', 'danylloferreira@mangue3.com'),
+            password:      Env.get('PASSWORD', 'elo1234*'),
+            client_secret: Env.get('CLIENT_SECRET', 'cbKFwsVBgkEDBkQVAOQw7dTTcgwYiCuB3lYCwuVH')
+        };
     }
 }
 

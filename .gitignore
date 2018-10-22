@@ -6,6 +6,7 @@ tmp
 
 # Environment variables, never commit this file
 .env
+.idea/workspace.xml
 
 # The development sqlite file
 database/development.sqlite
