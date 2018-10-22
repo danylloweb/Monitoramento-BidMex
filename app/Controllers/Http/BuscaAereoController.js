@@ -70,10 +70,10 @@ class BuscaAereoController {
      * usersLoggedIn
      * @returns {*}
      */
-     async usersLoggedIn () {
+     async usersLoggedIn ({ request }) {
         return await client({
             method: 'get',
-            url: url_buscador + '/api/users/logged',
+            url: url_buscador + '/api'+ request.originalUrl(),
             headers: {
                 Accept: 'application/json',
                 Authorization:  await this.accessToken()
@@ -86,10 +86,10 @@ class BuscaAereoController {
      * lastLogin
      * @param params
      */
-    async lastLogin({ params }) {
+    async lastLogin({ request }) {
         return await client({
             method: 'get',
-            url: url_buscador + '/api/users/getLastLogin/' + params.id,
+            url: url_buscador + '/api'+ request.originalUrl(),
             headers: {
                 Accept: 'application/json',
                 Authorization:  await this.accessToken()

@@ -15,7 +15,7 @@ Route.get('/crawler','CrawlerController.index').middleware(['auth']);
 Route.get('/crm','CrmController.index').middleware(['auth']);
 Route.get('/financial','FinanceiraController.index').middleware(['auth']);
 Route.post('/user/register','AuthController.register').middleware(['auth']);
-Route.get('/user/logged','BuscaAereoController.usersLoggedIn').middleware(['auth']);
-Route.get('/user/lastLogin/:id','BuscaAereoController.lastLogin').middleware(['auth']);
+Route.get('/users/logged','BuscaAereoController.usersLoggedIn').middleware(['auth']);
+Route.get('/user/getLastLogin','BuscaAereoController.lastLogin').middleware(['auth']);
 
 Route.any('*', ({ view }) => view.render('home'));
