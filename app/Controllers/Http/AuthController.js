@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const User = use('App/Models/User')
+const User = use('App/Models/User');
 
 /**
  * AuthController
@@ -13,7 +13,7 @@ class AuthController {
      * @param response
      */
     async register({request, response }) {
-        const data = request.only(['username','email','password'])
+        const data = request.only(['username','email','password']);
         const user  = await User.create(data);
         return response.json(user);
 

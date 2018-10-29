@@ -1,0 +1,42 @@
+'use strict';
+
+const Issue    = use('App/Models/Issue');
+const Database = use('Database');
+
+/**
+ * IssueController
+ */
+class IssueController {
+    /**
+     * index
+     * @param request
+     * @param response
+     * @returns {Object|*|{total, perPage, page, lastPage, data}|Serializer}
+     */
+    async index({ request, response })
+    {
+        const page   = request.get('page') ? request.get('page') : 1;
+        const issues = await Issue.query()
+            .orderBy('id', 'desc')
+            .paginate(page, 10);
+        return response.json(issues);
+    }
+    /**
+     * store
+      * @param request
+     * @param response
+     */
+    async store({ request, response })
+    {
+        try {
+            const data = request.only(['name', 'system', 'type', 'description']);
+            const issue = await Issue.create(data);
+            return response.json(issue);
+        }catch (erro){
+            return response.json({error: true, message: 'Error na gravação'});
+        }
+    }
+}
+
+
+module.exports = IssueController;

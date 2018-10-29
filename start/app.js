@@ -18,7 +18,8 @@ const providers = [
   'lucid-mongo/providers/LucidMongoProvider',
   '@adonisjs/framework/providers/ViewProvider',
   '@adonisjs/redis/providers/RedisProvider',
-  'adonis-cache/providers/CacheProvider'
+  'adonis-cache/providers/CacheProvider',
+  '@adonisjs/validator/providers/ValidatorProvider'
 ];
 
 /*
