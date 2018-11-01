@@ -1,7 +1,7 @@
 'use strict';
 
 const Issue    = use('App/Models/Issue');
-const Database = use('Database');
+
 
 /**
  * IssueController
@@ -17,7 +17,7 @@ class IssueController {
     {
         const page   = request.get('page') ? request.get('page') : 1;
         const issues = await Issue.query()
-            .orderBy('id', 'desc')
+            .orderBy('create_at', 'desc')
             .paginate(page, 10);
         return response.json(issues);
     }
