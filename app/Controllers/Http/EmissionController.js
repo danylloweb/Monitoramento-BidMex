@@ -2,7 +2,7 @@
 const client       = use('request-promise');
 const Cache        = use('Cache');
 const Env          = use('Env');
-const url_buscador = Env.get('URL_API_BUSCADOR', 'http://api.busca53.dev');
+const url_buscador = Env.get('BUSCA_URL', 'http://api.busca53.dev');
 /**
  * EmissionController
  */
@@ -56,8 +56,8 @@ class EmissionController {
         return await {
             grant_type:   'password',
             client_id:     Env.get('BUSCA_CLIENT_ID', '4'),
-            username:      Env.get('USERNAME', 'danylloferreira@mangue3.com'),
-            password:      Env.get('PASSWORD', 'elo1234*'),
+            username:      Env.get('BUSCA_USERNAME', 'danylloferreira@mangue3.com'),
+            password:      Env.get('BUSCA_PASSWORD', 'elo1234*'),
             client_secret: Env.get('BUSCA_CLIENT_SECRET', 'wTp5BV9J6cFZi7Z3SiG8sxcHn5CSJ0OJoaqg2jaJ')
         };
     }
