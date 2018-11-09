@@ -24,6 +24,40 @@ class EmissionController {
             json: true
         });
     }
+
+    /**
+     * companies
+     * @param request
+     * @returns {*}
+     */
+    async companies({request}){
+        return await client({
+            method: 'get',
+            url: url_buscador + request.originalUrl(),
+            headers: {
+                Accept: 'application/json',
+                Authorization:  await this.accessToken()
+            },
+            json: true
+        });
+    }
+
+    /**
+     * lateOpsFinancial
+     * @returns {*}
+     */
+    async lateOpsFinancial({request}){
+
+        return await client({
+            method: 'get',
+            url: url_buscador + request.originalUrl(),
+            headers: {
+                Accept: 'application/json',
+                Authorization:  await this.accessToken()
+            },
+            json: true
+        });
+    }
     /**
      * acessToken
      * @returns {*}

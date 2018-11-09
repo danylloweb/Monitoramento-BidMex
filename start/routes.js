@@ -20,5 +20,7 @@ Route.get('/user/getLastLogin','BuscaAereoController.lastLogin').middleware(['au
 Route.post('/issues/store','IssueController.store').middleware(['auth']);
 Route.get('/issues','IssueController.index').middleware(['auth']);
 Route.get('/lateOps','EmissionController.lateOps').middleware(['auth']);
+Route.get('/lateOpsFinancial','EmissionController.lateOpsFinancial').middleware(['auth']);
+Route.get('/companies','EmissionController.companies').middleware(['auth']);
 
 Route.any('*', ({ view }) => view.render('home'));
