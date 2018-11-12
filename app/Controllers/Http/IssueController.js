@@ -29,7 +29,16 @@ class IssueController {
     async store({ request, response })
     {
         try {
-            const data = request.only(['name', 'system', 'type', 'description']);
+            const data = request.only([
+                'name',
+                'system',
+                'type',
+                'description',
+                'description',
+                'emission_id',
+                'body',
+                'company'
+            ]);
             const issue = await Issue.create(data);
             return response.json(issue);
         }catch (erro){
