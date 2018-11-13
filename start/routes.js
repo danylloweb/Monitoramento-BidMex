@@ -28,6 +28,6 @@ Route.get('/lateOps','EmissionController.index').middleware(['auth']);
 Route.get('/lateOpsFinancial','EmissionController.index').middleware(['auth']);
 Route.get('/dashboards/search-count','EmissionController.index').middleware(['auth']);
 Route.get('/dashboards/op-count','EmissionController.index').middleware(['auth']);
-Route.get('/companies','EmissionController.companies').middleware(['auth']);
+Route.get('/companies','EmissionController.index').middleware(['auth']);
 
 Route.any('*', ({ view }) => view.render('home'));
