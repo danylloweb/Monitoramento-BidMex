@@ -106,7 +106,7 @@ module.exports = {
         // w: Env.get('DB_W, 0),
         // readPreference: Env.get('DB_READ_PREFERENCE', 'secondary'),
         // authSource: Env.get('DB_AUTH_SOURCE', ''),
-        // authMechanism: Env.get('DB_AUTH_MECHANISM', ''),
+        authMechanism: Env.get('DB_AUTH_MECHANISM', 'SCRAM-SHA-1')
         // other options
       }
     }
