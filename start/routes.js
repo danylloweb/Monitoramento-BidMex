@@ -3,6 +3,7 @@ const Route = use('Route');
 
 
 Route.get('/', ({ view }) => {
+  console.log('request');
   return view.render('home')
 });
 // Auth provider
