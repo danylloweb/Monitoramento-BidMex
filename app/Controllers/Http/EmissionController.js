@@ -7,30 +7,14 @@ const url_buscador = Env.get('BUSCA_URL', 'http://api.busca53.dev');
  * EmissionController
  */
 class EmissionController {
-    
+
 
     /**
-     * lastLogin
-     * @param params
-     */
-    async lateOps({ request }) {
-        return await client({
-            method: 'get',
-            url: url_buscador + request.originalUrl(),
-            headers: {
-                Accept: 'application/json',
-                Authorization:  await this.accessToken()
-            },
-            json: true
-        });
-    }
-
-    /**
-     * companies
+     * index
      * @param request
      * @returns {*}
      */
-    async companies({request}){
+    async index({ request }) {
         return await client({
             method: 'get',
             url: url_buscador + request.originalUrl(),
@@ -42,22 +26,6 @@ class EmissionController {
         });
     }
 
-    /**
-     * lateOpsFinancial
-     * @returns {*}
-     */
-    async lateOpsFinancial({request}){
-
-        return await client({
-            method: 'get',
-            url: url_buscador + request.originalUrl(),
-            headers: {
-                Accept: 'application/json',
-                Authorization:  await this.accessToken()
-            },
-            json: true
-        });
-    }
     /**
      * acessToken
      * @returns {*}
