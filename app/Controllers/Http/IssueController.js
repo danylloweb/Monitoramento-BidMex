@@ -7,7 +7,7 @@ const Issue = use('App/Models/Issue');
  * IssueController
  */
 class IssueController {
-    
+
     /**
      * index
      * @param request
@@ -15,10 +15,11 @@ class IssueController {
      * @returns {Object|*|{total, perPage, page, lastPage, data}|Serializer}
      */
     async index({request, response}) {
-        const page = await this.getPage(request.get('page'));
+        const page   = await this.getPage(request.get('page'));
+        const limit  = await this.getLimit(request.get('limit'));
         const issues = await Issue.query()
             .orderBy('create_at', 'desc')
-            .paginate(page.page, 10);
+            .paginate(page,limit);
         return response.json(issues);
     }
 
@@ -29,12 +30,13 @@ class IssueController {
      * @returns {*|{limit, strict, types}|void}
      */
     async issuesByEmission({request, response}) {
-        const page = await this.getPage(request.get('page'));
+        const page   = await this.getPage(request.get('page'));
+        const limit  = await this.getLimit(request.get('limit'));
         const emission_id = request.get('emission_id');
         const issues = await Issue.query()
             .orderBy('create_at', 'desc')
             .where('emission_id', '=', emission_id.emission_id)
-            .paginate(page, 50);
+            .paginate(page,limit);
         return response.json(issues);
     }
 
@@ -70,6 +72,15 @@ class IssueController {
      */
     async getPage(pageRequest = false){
         return pageRequest.page ? pageRequest.page : 1;
+    }
+
+    /**
+     * getLimit
+     * @param limitRequest
+     * @returns {*}
+     */
+    async getLimit(limitRequest = false){
+        return limitRequest.limit ? limitRequest.limit : 15;
     }
 }
 

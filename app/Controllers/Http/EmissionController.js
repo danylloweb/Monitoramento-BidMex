@@ -7,7 +7,7 @@ const url_buscador = Env.get('BUSCA_URL', 'http://api.busca53.dev');
  * EmissionController
  */
 class EmissionController {
-
+    
 
     /**
      * lastLogin
