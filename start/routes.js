@@ -31,5 +31,6 @@ Route.get('/dashboards/search-count','EmissionController.index').middleware(['au
 Route.get('/dashboards/op-count','EmissionController.index').middleware(['auth']);
 Route.get('/companies','EmissionController.index').middleware(['auth']);
 Route.get('/averageEmissionTime','EmissionController.index').middleware(['auth']);
-
+// Testando Front-End
+Route.get('/tests/busca','FrontTestsController.testBusca').middleware(['auth']);
 Route.any('*', ({ view }) => view.render('home'));
