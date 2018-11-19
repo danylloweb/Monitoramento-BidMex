@@ -1,18 +1,23 @@
 'use strict';
-const Service = use('App/Services/FrontTestsService');
+const FrontTestsService = use('App/Services/FrontTestsService');
 
 /**
  * class
  * FrontTestsController
  */
 class FrontTestsController {
+
+    constructor() {
+        this.frontTestsService = new FrontTestsService
+    }
+
     /**
      * index
      * @returns {*|{limit, strict, types}|void}
      */
     async testBuscaAereo({response}) {
         try {
-            await Service();
+            await this.frontTestsService.run();
             return response.json({error: false, message: 'Online'});
         } catch (e) {
             console.log(e);
