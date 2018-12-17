@@ -26,6 +26,19 @@ class EmissionController {
         });
     }
 
+    async updateStatus({ request }) {
+        return await client({
+            method: 'put',
+            url: url_buscador + request.originalUrl(),
+            body: request.all(),
+            headers: {
+                Accept: 'application/json',
+                Authorization:  await this.accessToken()
+            },
+            json: true
+        });
+    }
+
     /**
      * acessToken
      * @returns {*}

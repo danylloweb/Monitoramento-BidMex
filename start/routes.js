@@ -31,5 +31,6 @@ Route.get('/dashboards/search-count','EmissionController.index');
 Route.get('/dashboards/op-count','EmissionController.index');
 Route.get('/companies','EmissionController.index');
 Route.get('/averageEmissionTime','EmissionController.index');
+Route.put('/companies/emission-status/:id','EmissionController.updateStatus');
 
 Route.any('*', ({ view }) => view.render('home'));
