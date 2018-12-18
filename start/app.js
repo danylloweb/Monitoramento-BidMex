@@ -19,7 +19,8 @@ const providers = [
   '@adonisjs/framework/providers/ViewProvider',
   '@adonisjs/redis/providers/RedisProvider',
   'adonis-cache/providers/CacheProvider',
-  '@adonisjs/validator/providers/ValidatorProvider'
+  '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/mail/providers/MailProvider'
 ];
 
 /*

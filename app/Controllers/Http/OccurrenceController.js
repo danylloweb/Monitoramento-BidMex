@@ -1,6 +1,7 @@
 'use strict';
 
 const Occurrence = use('App/Models/Occurrence');
+const Mail = use('Mail');
 
 class OccurrenceController {
     /**
@@ -32,8 +33,7 @@ class OccurrenceController {
                 'system',
                 'type',
                 'description',
-                'status',
-                'body'
+                'status'
             ]);
             const occurrence = await Occurrence.create(data);
             return response.json(occurrence);
