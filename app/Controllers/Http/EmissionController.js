@@ -26,6 +26,11 @@ class EmissionController {
         });
     }
 
+    /**
+     * 
+     * @param request
+     * @returns {*}
+     */
     async updateStatus({ request }) {
         return await client({
             method: 'put',

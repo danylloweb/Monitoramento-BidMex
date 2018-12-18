@@ -22,6 +22,8 @@ Route.get('/users/logged','BuscaAereoController.usersLoggedIn');
 Route.get('/user/getLastLogin','BuscaAereoController.lastLogin');
 // ApiGateway
 Route.post('/issues/store','IssueController.store');
+Route.post('/occurrence/store','OccurrenceController.store');
+Route.get('/occurrences','OccurrenceController.index');
 Route.get('/issues','IssueController.index');
 Route.get('/issuesByEmissionId','IssueController.issuesByEmission');
 // Direto no busca
@@ -31,6 +33,7 @@ Route.get('/dashboards/search-count','EmissionController.index');
 Route.get('/dashboards/op-count','EmissionController.index');
 Route.get('/companies','EmissionController.index');
 Route.get('/averageEmissionTime','EmissionController.index');
+Route.get('/jira','OccurrenceController.getJira');
 Route.put('/companies/emission-status/:id','EmissionController.updateStatus');
 
 Route.any('*', ({ view }) => view.render('home'));

@@ -29,6 +29,7 @@
     "@adonisjs/validator": "^5.0.6",
     "adonis-cache": "^0.3.2",
     "aws-sdk": "^2.378.0",
+    "jira-connector": "^2.10.0",
     "lucid-mongo": "^3.1.2",
     "mysql": "^2.16.0",
     "request": "^2.87.0",
