@@ -1,4 +1,5 @@
 'use strict';
+const User         = use('App/Models/User');
 const client       = use('request-promise');
 const JiraClient   = use('jira-connector');
 const Occurrence   = use('App/Models/Occurrence');
@@ -106,6 +107,24 @@ class OccurrenceController {
         });
         return jira.issue.getIssue({});
     }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @param auth
+     * @returns {Request<Chime.Types.GetUserResponse, AWSError>|Promise|Request<CognitoIdentityServiceProvider.Types.GetUserResponse, AWSError>|Request<IAM.Types.GetUserResponse, AWSError>|Object}
+     */
+    async admitOccurrence({request,response, auth}){
+
+       let userAuth   = await auth.getUser();
+       let occurrence = await Occurrence
+            .query()
+            .where('_id', request.get('_id'))
+            .update({ programmer_id : userAuth._id});
+        return response.json(occurrence);
+    }
+
 }
 
 module.exports = OccurrenceController;
