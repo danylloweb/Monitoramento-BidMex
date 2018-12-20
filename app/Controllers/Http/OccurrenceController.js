@@ -8,7 +8,7 @@ const Env          = use('Env');
 const url_buscador = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
 
 /**
- *
+ * OccurrenceController
  */
 class OccurrenceController {
     /**
@@ -18,20 +18,26 @@ class OccurrenceController {
      * @returns {Object|*|{total, perPage, page, lastPage, data}|Serializer}
      */
     async index({request, response}) {
-        const page  = await this.getPage(request.get('page'));
-        const limit = await this.getLimit(request.get('limit'));
-        if (request.get('type')) {
-            let type     = request.get('type');
+        try {
+            const page  = await this.getPage(request.get('page'));
+            const limit = await this.getLimit(request.get('limit'));
+
+            if (request.get('type')) {
+                let type = request.get('type');
+                const issues = await Occurrence.query()
+                    .where('type', '=', type.type)
+                    .orderBy('create_at', 'desc')
+                    .paginate(page, limit);
+                return response.json(issues);
+            }
+
             const issues = await Occurrence.query()
-                .where('type', '=', type.type)
                 .orderBy('create_at', 'desc')
                 .paginate(page, limit);
             return response.json(issues);
+        } catch (erro) {
+            return response.json({error: true, message: erro.message});
         }
-        const issues = await Occurrence.query()
-            .orderBy('create_at', 'desc')
-            .paginate(page, limit);
-        return response.json(issues);
     }
 
 
@@ -85,14 +91,6 @@ class OccurrenceController {
         return limitRequest.limit ? limitRequest.limit : 15;
     }
 
-    /**
-     *
-     * @param param
-     * @returns {*}
-     */
-    async getParam(param){
-        return param.param;
-    }
 
     /**
      * 
@@ -148,7 +146,7 @@ class OccurrenceController {
     }
 
     /**
-     * 
+     *
      * @param request
      * @param response
      * @returns {*}
