@@ -21,7 +21,7 @@ Route.get('/financial','FinanceiraController.index');
 // Usuarios logados 
 Route.get('/users/logged','BuscaAereoController.usersLoggedIn');
 Route.get('/user/getLastLogin','BuscaAereoController.lastLogin');
-// ApiGateway
+
 Route.post('/issues/store','IssueController.store');
 Route.post('/occurrence/store','OccurrenceController.store');
 Route.post('/occurrence/updateStatus','OccurrenceController.updateStatus');
