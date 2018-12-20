@@ -18,11 +18,19 @@ class OccurrenceController {
      * @returns {Object|*|{total, perPage, page, lastPage, data}|Serializer}
      */
     async index({request, response}) {
-        const page   = await this.getPage(request.get('page'));
-        const limit  = await this.getLimit(request.get('limit'));
+        const page  = await this.getPage(request.get('page'));
+        const limit = await this.getLimit(request.get('limit'));
+        if (request.get('type')) {
+            let type     = request.get('type');
+            const issues = await Occurrence.query()
+                .where('type', '=', type.type)
+                .orderBy('create_at', 'desc')
+                .paginate(page, limit);
+            return response.json(issues);
+        }
         const issues = await Occurrence.query()
             .orderBy('create_at', 'desc')
-            .paginate(page,limit);
+            .paginate(page, limit);
         return response.json(issues);
     }
 
@@ -39,7 +47,7 @@ class OccurrenceController {
 
             let userUtenticade ={
                 'email': user.data.email,
-                'programmer_id' : ''
+                'user_id' : ''
             };
 
             let data = request.only([
@@ -75,6 +83,15 @@ class OccurrenceController {
      */
     async getLimit(limitRequest = false){
         return limitRequest.limit ? limitRequest.limit : 15;
+    }
+
+    /**
+     *
+     * @param param
+     * @returns {*}
+     */
+    async getParam(param){
+        return param.param;
     }
 
     /**
@@ -117,14 +134,36 @@ class OccurrenceController {
      */
     async admitOccurrence({request,response, auth}){
 
-       let userAuth   = await auth.getUser();
-       let occurrence = await Occurrence
+        let userAuth   = await auth.getUser();
+        let id = request.get('_id');
+        let data = {
+            user_id : userAuth._id,
+            status  : 1
+        };
+        let occurrence = await Occurrence
             .query()
-            .where('_id', request.get('_id'))
-            .update({ programmer_id : userAuth._id});
+            .where('_id', id._id)
+            .update(data);
         return response.json(occurrence);
     }
 
+    /**
+     * 
+     * @param request
+     * @param response
+     * @returns {*}
+     */
+    async updateStatus({request , response}){
+        let status = request.get('status');
+        let data = {
+            status : status.status
+        };
+        let occurrence = await Occurrence
+            .query()
+            .where('_id', id._id)
+            .update(data);
+        return response.json(occurrence);
+    }
 }
 
 module.exports = OccurrenceController;

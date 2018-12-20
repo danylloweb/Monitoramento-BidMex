@@ -8,7 +8,7 @@ Route.get('/', ({ view }) => {
 });
 // Auth provider
 Route.post('/user/register','AuthController.register').middleware(['auth']);
-Route.get('/getUser','OccurrenceController.admitOccurrence').middleware(['auth']);
+Route.post('/admit/occurrence','OccurrenceController.admitOccurrence').middleware(['auth']);
 Route.post('/oauth/token','AuthController.authenticate');
 Route.get('/oauth/revoke-token','AuthController.revokeToken').middleware(['auth']);
 Route.get('/oauth/revoke-tokens-all','AuthController.revokeAllTokens').middleware(['auth']);
@@ -24,6 +24,7 @@ Route.get('/user/getLastLogin','BuscaAereoController.lastLogin');
 // ApiGateway
 Route.post('/issues/store','IssueController.store');
 Route.post('/occurrence/store','OccurrenceController.store');
+Route.post('/occurrence/updateStatus','OccurrenceController.updateStatus');
 Route.get('/occurrences','OccurrenceController.index');
 Route.get('/issues','IssueController.index');
 Route.get('/issuesByEmissionId','IssueController.issuesByEmission');
