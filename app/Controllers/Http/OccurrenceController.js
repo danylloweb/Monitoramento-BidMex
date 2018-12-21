@@ -133,16 +133,17 @@ class OccurrenceController {
     async admitOccurrence({request,response, auth}){
 
         let userAuth   = await auth.getUser();
-        let id = request.get('_id');
+        let oc = request.all();
         let data = {
-            user_id : userAuth._id,
+            user_id : userAuth.username,
             status  : 1
         };
-        let occurrence = await Occurrence
+       await Occurrence
             .query()
-            .where('_id', id._id)
+            .where('_id', oc._id)
             .update(data);
-        return response.json(occurrence);
+          oc  = {...oc,...data};
+        return response.json(oc);
     }
 
     /**
