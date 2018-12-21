@@ -8,6 +8,7 @@ Route.get('/', ({ view }) => {
 });
 // Auth provider
 Route.post('/user/register','AuthController.register').middleware(['auth']);
+Route.get('/users','AuthController.users').middleware(['auth']);
 Route.post('/admit/occurrence','OccurrenceController.admitOccurrence').middleware(['auth']);
 Route.post('/oauth/token','AuthController.authenticate');
 Route.get('/oauth/revoke-token','AuthController.revokeToken').middleware(['auth']);

@@ -75,6 +75,45 @@ class AuthController {
             return response.json({error: false, message: 'unauthenticated'});
         }
     }
+
+    /**
+     * index
+     * @param request
+     * @param response
+     * @returns {Object|*|{total, perPage, page, lastPage, data}|Serializer}
+     */
+    async users({request, response}) {
+        try {
+            const page  = await this.getPage(request.get('page'));
+            const limit = await this.getLimit(request.get('limit'));
+
+            const issues = await User.query()
+                .orderBy('create_at', 'desc')
+                .paginate(page, limit);
+            return response.json(issues);
+        } catch (erro) {
+            return response.json({error: true, message: erro.message});
+        }
+    }
+
+    /**
+     * getPage
+     * @param pageRequest
+     * @returns {*}
+     */
+    async getPage(pageRequest = false){
+        return pageRequest.page ? pageRequest.page : 1;
+    }
+
+    /**
+     * getLimit
+     * @param limitRequest
+     * @returns {*}
+     */
+    async getLimit(limitRequest = false){
+        return limitRequest.limit ? limitRequest.limit : 15;
+    }
+
 }
 
 module.exports = AuthController;
