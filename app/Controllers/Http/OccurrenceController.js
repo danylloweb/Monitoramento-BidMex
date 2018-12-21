@@ -22,14 +22,14 @@ class OccurrenceController {
             const page  = await this.getPage(request.get('page'));
             const limit = await this.getLimit(request.get('limit'));
 
-            if (request.get('type')) {
-                let type = request.get('type');
-                const issues = await Occurrence.query()
-                    .where('type', '=', type.type)
-                    .orderBy('create_at', 'desc')
-                    .paginate(page, limit);
-                return response.json(issues);
-            }
+            // if (request.get('type')) {
+            //     let type = request.get('type');
+            //     const issues = await Occurrence.query()
+            //         .where('type', '=', type.type)
+            //         .orderBy('create_at', 'desc')
+            //         .paginate(page, limit);
+            //     return response.json(issues);
+            // }
 
             const issues = await Occurrence.query()
                 .orderBy('create_at', 'desc')

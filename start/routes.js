@@ -29,6 +29,7 @@ Route.get('/occurrences','OccurrenceController.index');
 Route.get('/issues','IssueController.index');
 Route.get('/issuesByEmissionId','IssueController.issuesByEmission');
 // Direto no busca
+Route.get('/firstOpAgency','EmissionController.index');
 Route.get('/lateOps','EmissionController.index');
 Route.get('/lateOpsFinancial','EmissionController.index');
 Route.get('/dashboards/search-count','EmissionController.index');
