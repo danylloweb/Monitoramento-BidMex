@@ -53,7 +53,6 @@ class IssueController {
                 'system',
                 'type',
                 'description',
-                'description',
                 'emission_id',
                 'body',
                 'company'

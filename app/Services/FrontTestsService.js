@@ -2,7 +2,7 @@ const Env            = use('Env');
 const moment         = use('moment');
 const _              = use('lodash');
 const puppeteer      = use('puppeteer');
-const URL_BUSCA      = Env.get('URL_BUSCA', 'https://buscaaereo.com.br/#/');
+const URL_BUSCA      = Env.get('URL_BUSCA_FRONT', 'https://buscaaereo.com.br/#/');
 const EMAIL_BUSCA    = Env.get('EMAIL_BUSCA', 'danilopedrosa@mangue3.com');
 const PASSWORD_BUSCA = Env.get('PASSWORD_BUSCA', 'lourivaldoviado');
 
