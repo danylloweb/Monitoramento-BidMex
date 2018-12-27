@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const client = use('request-promise');
 
 /**

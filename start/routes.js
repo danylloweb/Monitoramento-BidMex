@@ -30,6 +30,7 @@ Route.get('/occurrences','OccurrenceController.index');
 Route.get('/issues','IssueController.index');
 Route.get('/issuesByEmissionId','IssueController.issuesByEmission');
 // Direto no busca
+<<<<<<< HEAD
 Route.get('/firstOpAgency','EmissionController.index');
 Route.get('/lateOps','EmissionController.index');
 Route.get('/lateOpsFinancial','EmissionController.index');
@@ -41,3 +42,14 @@ Route.get('/jira','OccurrenceController.getJira');
 Route.put('/companies/emission-status/:id','EmissionController.updateStatus');
 
 Route.any('*', ({ view }) => view.render('home'));
+=======
+Route.get('/lateOps','EmissionController.index').middleware(['auth']);
+Route.get('/lateOpsFinancial','EmissionController.index').middleware(['auth']);
+Route.get('/dashboards/search-count','EmissionController.index').middleware(['auth']);
+Route.get('/dashboards/op-count','EmissionController.index').middleware(['auth']);
+Route.get('/companies','EmissionController.index').middleware(['auth']);
+Route.get('/averageEmissionTime','EmissionController.index').middleware(['auth']);
+// Testando Front-End
+Route.get('/front-tests/buscaaereo','FrontTestsController.testBuscaAereo').middleware(['auth']);
+Route.any('*', ({ view }) => view.render('home'));
+>>>>>>> cd51e43becf06210bf05b3d00893225c12f4c1c3

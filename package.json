@@ -32,6 +32,7 @@
     "jira-connector": "^2.10.0",
     "lucid-mongo": "^3.1.2",
     "mysql": "^2.16.0",
+    "puppeteer": "^1.10.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "superagent": "^3.8.3"
