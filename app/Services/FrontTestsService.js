@@ -1,9 +1,9 @@
-const Env = use('Env');
-const moment = use('moment');
-const _ = use('lodash');
-const puppeteer = use('puppeteer');
-const URL_BUSCA = Env.get('URL_BUSCA', 'https://buscaaereo.com.br/#/');
-const EMAIL_BUSCA = Env.get('EMAIL_BUSCA', 'danilopedrosa@mangue3.com');
+const Env            = use('Env');
+const moment         = use('moment');
+const _              = use('lodash');
+const puppeteer      = use('puppeteer');
+const URL_BUSCA      = Env.get('URL_BUSCA', 'https://buscaaereo.com.br/#/');
+const EMAIL_BUSCA    = Env.get('EMAIL_BUSCA', 'danilopedrosa@mangue3.com');
 const PASSWORD_BUSCA = Env.get('PASSWORD_BUSCA', 'lourivaldoviado');
 
 
@@ -281,7 +281,7 @@ class FrontTestsService {
      */
     async run() {
         console.log('entrou no run');
-        const browser = await puppeteer.launch({headless: false});
+        const browser = await puppeteer.launch({headless: true});
         const page = (await browser.pages())[0];
         await page.setViewport({width: 1000, height: 800});
         await page.setDefaultNavigationTimeout(100 * 1000);
