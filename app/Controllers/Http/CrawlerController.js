@@ -28,4 +28,4 @@ class CrawlerController {
     }
 }
 
-module.exports = CrawlerController
+module.exports = CrawlerController;
