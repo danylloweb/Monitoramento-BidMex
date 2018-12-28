@@ -24,6 +24,8 @@ Route.get('/users/logged','BuscaAereoController.usersLoggedIn');
 Route.get('/user/getLastLogin','BuscaAereoController.lastLogin');
 
 Route.post('/issues/store','IssueController.store');
+Route.post('/agencyLogStatus/store','AgencyLogStatusController.store').middleware(['auth']);
+Route.get('/agencyLogStatus','AgencyLogStatusController.index').middleware(['auth']);
 Route.post('/occurrence/store','OccurrenceController.store');
 Route.post('/occurrence/updateStatus','OccurrenceController.updateStatus');
 Route.get('/occurrences','OccurrenceController.index');
