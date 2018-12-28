@@ -43,6 +43,24 @@ class AgencyLogStatusController {
         }
     }
 
+    /**
+     * getPage
+     * @param pageRequest
+     * @returns {*}
+     */
+    async getPage(pageRequest = false){
+        return pageRequest.page ? pageRequest.page : 1;
+    }
+
+    /**
+     * getLimit
+     * @param limitRequest
+     * @returns {*}
+     */
+    async getLimit(limitRequest = false){
+        return limitRequest.limit ? limitRequest.limit : 15;
+    }
+
 }
 
 module.exports = AgencyLogStatusController;

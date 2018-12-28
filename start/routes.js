@@ -39,6 +39,7 @@ Route.get('/lateOpsFinancial','EmissionController.index');
 Route.get('/dashboards/search-count','EmissionController.index');
 Route.get('/dashboards/op-count','EmissionController.index');
 Route.get('/companies','EmissionController.index');
+Route.get('/goals','EmissionController.index');
 Route.get('/averageEmissionTime','EmissionController.index');
 Route.get('/jira','OccurrenceController.getJira');
 Route.put('/companies/emission-status/:id','EmissionController.updateStatus');
