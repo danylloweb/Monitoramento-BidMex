@@ -17,7 +17,7 @@ Route.get('/oauth/revoke-tokens-all','AuthController.revokeAllTokens').middlewar
 Route.get('/buscaaereo/back-end','ApigatewayController.GatewayBuscador');
 Route.get('/buscaaereo/Manager','ApigatewayController.GatewayManager');
 Route.get('/crawler','CrawlerController.index');
-Route.get('/crm','CrmController.index');
+Route.get('/providers/report-status','CrmController.index');
 Route.get('/financial','FinanceiraController.index');
 // Usuarios logados 
 Route.get('/users/logged','ApigatewayController.usersLoggedIn');
