@@ -88,4 +88,4 @@ class BuscaaereoController {
     }
 }
 
-module.exports = EmissionController;
+module.exports = BuscaaereoController;
