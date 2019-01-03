@@ -1,11 +1,7 @@
 'use strict';
 const Route = use('Route');
 
-
-Route.get('/', ({ view }) => {
-  console.log('request');
-  return view.render('home')
-});
+Route.get('/', ({ view }) => { return view.render('home') });
 // Auth provider
 Route.post('/user/register','AuthController.register').middleware(['auth']);
 Route.get('/users','AuthController.users').middleware(['auth']);
