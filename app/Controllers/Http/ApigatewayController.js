@@ -135,4 +135,4 @@ class ApigatewayController {
     }
 }
 
-module.exports = BuscaAereoController;
+module.exports = ApigatewayController;
