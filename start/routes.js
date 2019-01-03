@@ -14,14 +14,14 @@ Route.post('/oauth/token','AuthController.authenticate');
 Route.get('/oauth/revoke-token','AuthController.revokeToken').middleware(['auth']);
 Route.get('/oauth/revoke-tokens-all','AuthController.revokeAllTokens').middleware(['auth']);
 // Teste de funcionamento 
-Route.get('/buscaaereo/back-end','BuscaAereoController.GatewayBuscador');
-Route.get('/buscaaereo/Manager','BuscaAereoController.GatewayManager');
+Route.get('/buscaaereo/back-end','ApigatewayController.GatewayBuscador');
+Route.get('/buscaaereo/Manager','ApigatewayController.GatewayManager');
 Route.get('/crawler','CrawlerController.index');
 Route.get('/crm','CrmController.index');
 Route.get('/financial','FinanceiraController.index');
 // Usuarios logados 
-Route.get('/users/logged','BuscaAereoController.usersLoggedIn');
-Route.get('/user/getLastLogin','BuscaAereoController.lastLogin');
+Route.get('/users/logged','ApigatewayController.usersLoggedIn');
+Route.get('/user/getLastLogin','ApigatewayController.lastLogin');
 
 Route.post('/issues/store','IssueController.store');
 Route.post('/agencyLogStatus/store','AgencyLogStatusController.store').middleware(['auth']);
@@ -32,17 +32,17 @@ Route.get('/occurrences','OccurrenceController.index');
 Route.get('/issues','IssueController.index');
 Route.get('/issuesByEmissionId','IssueController.issuesByEmission');
 // Direto no busca
-Route.get('/firstOpAgency','EmissionController.index');
-Route.get('/ops/send/:id','EmissionController.index');
-Route.get('/lateOps','EmissionController.index');
-Route.get('/lateOpsFinancial','EmissionController.index');
-Route.get('/dashboards/search-count','EmissionController.index');
-Route.get('/dashboards/op-count','EmissionController.index');
-Route.get('/companies','EmissionController.index');
-Route.get('/goals','EmissionController.index');
-Route.get('/averageEmissionTime','EmissionController.index');
+Route.get('/firstOpAgency','BuscaaereoController.index');
+Route.get('/ops/send/:id','BuscaaereoController.index');
+Route.get('/lateOps','BuscaaereoController.index');
+Route.get('/lateOpsFinancial','BuscaaereoController.index');
+Route.get('/dashboards/search-count','BuscaaereoController.index');
+Route.get('/dashboards/op-count','BuscaaereoController.index');
+Route.get('/companies','BuscaaereoController.index');
+Route.get('/goals','BuscaaereoController.index');
+Route.get('/averageEmissionTime','BuscaaereoController.index');
 Route.get('/jira','OccurrenceController.getJira');
-Route.put('/companies/emission-status/:id','EmissionController.updateStatus');
+Route.put('/companies/emission-status/:id','BuscaaereoController.updateStatus');
 Route.get('/front-tests/buscaaereo','FrontTestsController.testBuscaAereo').middleware(['auth']);
 Route.any('*', ({ view }) => view.render('home'));
 

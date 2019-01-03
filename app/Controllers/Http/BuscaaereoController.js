@@ -1,13 +1,18 @@
 'use strict';
-const client       = use('request-promise');
-const Cache        = use('Cache');
-const Env          = use('Env');
-const url_buscador = Env.get('BUSCA_URL', 'http://api.busca53.dev');
-/**
- * EmissionController
- */
-class EmissionController {
+const client = use('request-promise');
+const Cache  = use('Cache');
+const Env    = use('Env');
 
+/**
+ * BuscaaereoController
+ */
+class BuscaaereoController {
+    /**
+     * constructor
+     */
+    constructor() {
+        this.url_buscador = Env.get('BUSCA_URL', 'http://api.busca53.dev');
+    }
 
     /**
      * index
@@ -17,7 +22,7 @@ class EmissionController {
     async index({ request }) {
         return await client({
             method: 'get',
-            url: url_buscador + request.originalUrl(),
+            url: this.url_buscador + request.originalUrl(),
             headers: {
                 Accept: 'application/json',
                 Authorization:  await this.accessToken()
@@ -34,7 +39,7 @@ class EmissionController {
     async updateStatus({ request }) {
         return await client({
             method: 'put',
-            url: url_buscador + request.originalUrl(),
+            url: this.url_buscador + request.originalUrl(),
             body: request.all(),
             headers: {
                 Accept: 'application/json',
@@ -54,7 +59,7 @@ class EmissionController {
             return await Cache.remember('token_busca', 72, async() => {
                 let access_api = await client({
                     method: 'POST',
-                    url: url_buscador + '/oauth/token',
+                    url: this.url_buscador + '/oauth/token',
                     body: await this.authParams(),
                     json: true,
                     headers: {

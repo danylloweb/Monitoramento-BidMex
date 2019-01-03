@@ -1,16 +1,21 @@
 'use strict';
-const client       = use('request-promise');
-const Cache        = use('Cache');
-const Env          = use('Env');
-const url_buscador = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
-const url_manager  = Env.get('URL_API_GATEWAY_MANAGER', 'http://api.apigateway.test');
+const client = use('request-promise');
+const Cache  = use('Cache');
+const Env    = use('Env');
 
 /**
  * class
  * BuscaAereoController
  */
-class BuscaAereoController {
+class ApigatewayController {
 
+    /**
+     * constructor
+     */
+    constructor() {
+        this.url_buscador = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
+        this.url_manager  = Env.get('URL_API_GATEWAY_BUSCADOR', 'http://api.apigateway.test');
+    }
     /**
      * GatewayBuscador
      * @param response
@@ -20,7 +25,7 @@ class BuscaAereoController {
 
         try {
             let body = await client({
-                url: url_buscador + '/psv/airports',
+                url: this.url_buscador + '/psv/airports',
                 headers: {
                     Accept: 'application/json'
                 },
@@ -44,7 +49,7 @@ class BuscaAereoController {
 
         try {
             let body = await client({
-                url:  url_manager + '/psv/airports',
+                url: this.url_manager + '/psv/airports',
                 headers: {
                     Accept: 'application/json'
                 },
@@ -66,7 +71,7 @@ class BuscaAereoController {
      async usersLoggedIn ({ request }) {
         return await client({
             method: 'get',
-            url: url_buscador + '/api'+ request.originalUrl(),
+            url: this.url_buscador + '/api'+ request.originalUrl(),
             headers: {
                 Accept: 'application/json',
                 Authorization:  await this.accessToken()
@@ -82,7 +87,7 @@ class BuscaAereoController {
     async lastLogin({ request }) {
         return await client({
             method: 'get',
-            url: url_buscador + '/api'+ request.originalUrl(),
+            url: this.url_buscador + '/api'+ request.originalUrl(),
             headers: {
                 Accept: 'application/json',
                 Authorization:  await this.accessToken()
@@ -101,7 +106,7 @@ class BuscaAereoController {
            return await Cache.remember('token_', 72, async() => {
                 let access_api = await client({
                     method: 'POST',
-                    url: url_buscador + '/oauth/token',
+                    url: this.url_buscador + '/oauth/token',
                     body: await this.authParams(),
                     json: true,
                     headers: {
