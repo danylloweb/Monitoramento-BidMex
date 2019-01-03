@@ -18,6 +18,7 @@ Route.get('/buscaaereo/back-end','ApigatewayController.GatewayBuscador');
 Route.get('/buscaaereo/Manager','ApigatewayController.GatewayManager');
 Route.get('/crawler','CrawlerController.index');
 Route.get('/providers/report-status','CrmController.index');
+Route.get('/crm','ApigatewayController.GatewayBuscador');
 Route.get('/financial','FinanceiraController.index');
 // Usuarios logados 
 Route.get('/users/logged','ApigatewayController.usersLoggedIn');
