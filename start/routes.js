@@ -40,6 +40,6 @@ Route.get('/goals','BuscaaereoController.index');
 Route.get('/averageEmissionTime','BuscaaereoController.index');
 Route.get('/jira','OccurrenceController.getJira');
 Route.put('/companies/emission-status/:id','BuscaaereoController.updateStatus');
-Route.get('/front-tests/buscaaereo','FrontTestsController.testBuscaAereo').middleware(['auth']);
+// Route.get('/front-tests/buscaaereo','FrontTestsController.testBuscaAereo').middleware(['auth']);
 Route.any('*', ({ view }) => view.render('home'));
 
