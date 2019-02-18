@@ -1,95 +1,812 @@
-<!doctype html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-        <title>Api Monitoramento</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/ico" href="/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LogarTelecom</title>
+    <meta name="description" content="Logar Telecom Tecnologia em Fibra Óptica"/>
+    <meta name="keywords" content="fibra-otica"/>
+    <meta name="author" content="Danyllo Ferreira Santos da Silva"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title" content="inicial">
+    <meta property="og:description" content="logartelecom - Tecnologia em Fibra Óptica">
+    <meta property="og:url" content="https://logartelecom.net">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Tecnologia: Fibra Óptica">
+    <meta property="og:type" content="website">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #636b6f;
-                color: #fff;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    {{css('css/bootstrap.css')}}
+    {{css('css/font-awesome.min.css')}}
+    {{css('css/linea-icon.css')}}
+    {{css('css/fancy-buttons.css')}}
+    {{css('css/animate.css')}}
+    {{css('css/jquery.vegas.css')}}
+    {{css('css/baraja.css')}}
+    {{css('css/jquery.bxslider.css')}}
+    {{css('css/style.css')}}
+    {{css('css/responsive.css')}}
+    {{css('css/schemes/gray.css')}}
 
-            .full-height {
-                height: 100vh;
-            }
+    <!--=== Google Fonts ===-->
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:300,700,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!--=== Other CSS files ===-->
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+</head>
 
-            .position-ref {
-                position: relative;
-            }
+<body ng-app="myApp" ng-controller="myCtrl">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+<!--=== Preloader section starts ===-->
+<section id="preloader">
+    <div class="loading-circle fa-spin"></div>
+</section>
+<!--=== Preloader section Ends ===-->
 
-            .content {
-                text-align: center;
-            }
+<!--=== Header section Starts ===-->
+<div id="header" class="header-section">
+    <!-- sticky-bar Starts-->
+    <div class="sticky-bar-wrap">
+        <div class="sticky-section">
+            <div id="topbar-hold" class="nav-hold container">
+                <nav class="navbar" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--=== Site Name ===-->
+                        <a class="" href="#home">
+                            <img src="/images/logotipo-logar-white.png" alt="" class="logo-image"/>
+                            <!-- Feature Icon -->
+                        </a>
+                    </div>
 
-            .title {
-                font-size: 84px;
-                font-weight: bold;
-            }
+                    <!-- Main Navigation menu Starts -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#section-services">Sobre</a>
+                            </li>
+                            <li>
+                                <a href="#section-feature">Produtos</a>
+                            </li>
+                            <li>
+                                <a href="#step-2">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#section-video">Internet</a>
+                            </li>
+                            <li>
+                                <a href="#section-pricing">Planos</a>
+                            </li>
+                            <li>
+                                <a href="#section-contact">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Main Navigation menu ends-->
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- sticky-bar Ends-->
+    <!--=== Header section Ends ===-->
 
-            .sub-title {
-                font-size: 25px;
-                text-transform: none;
-            }
+    <!--=== Home Section Starts ===-->
+    <div id="home" class="home-section-wrap center">
+        <div class="section-overlay"></div>
+        <div class="container home">
+            <div class="row">
+                <h1 class="well-come">
+                    <strong>LOGAR TELECOM</strong>
+                </h1>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="intro-message">
+                        <strong>Tecnologia:</strong> Fibra Óptica</p>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Api Monitoramento </br>
-                    2019 </br>
-                </div>
-
-                <div class="sub-title m-b-md">
-                    v<strong>2.0</strong>
-                </div>
-
-                <div class="sub-title m-b-md">
-                    <a href="https://mangue3.com/"><img  width="600px;" src="https://mangue3.com/assets/img/Mangue3%20Logo.png" alt=""></a>
-                </div>
-
-                <div class="links">
+                    <div class="home-buttons">
+                        <a href="#section-pricing" class="fancy-button button-line button-white vertical">
+								<span class="icon">
+									<i class="fa fa-bookmark"></i>
+								</span>
+                            Nossos Planos
+                        </a>
+                        <button class="fancy-button button-line button-white zoom" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+								<span class="icon">
+									<i class="fa fa-barcode"></i>
+								</span>
+                            2º Via do Boleto
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+    <!--=== Home Section Ends ===-->
+</div>
+
+<!--=== Services section Starts ===-->
+<section id="section-services" class="services-wrap">
+    <div class="container services">
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1 center section-title">
+                <h3>SOBRE</h3>
+            </div>
+
+            <!-- Single Service Starts -->
+            <div class="col-md-12 col-sm-12 service animated" data-animation="fadeInLeft" data-animation-delay="700">
+                <div class="service-desc">
+                    <h4 class="service-title color-scheme">Sobre nós</h4>
+                    <p class="service-description justify">
+                        Há 10 anos a Logar Telecom passou a atuar como provedor de internet tendo como diferencial
+                        oferecer o serviço de
+                        internet
+                        banda larga para regiões que até então não dispunham deste serviço ou no possuíam apenas a opção
+                        de acesso
+                        discado
+                        convencional, mais lento e mais caro do que o serviço de banda larga que passou a ser oferecido.
+                    </p>
+                    <p class="service-description justify">
+                        Hoje a Logar Telecom atua em diversos bairros do município de igarassu, zona da mata norte do
+                        estado de
+                        Pernambuco buscando
+                        sempre ofertar uma conexão de internet confiável, rápida e de melhor relação custo-benefício.
+                    </p>
+                </div>
+            </div>
+            <!-- Single Service Ends -->
+
+            <!-- Single Service Starts -->
+            <div class="col-md-6 col-sm-12 service animated" data-animation="fadeInUp" data-animation-delay="700">
+                <div class="service-desc">
+                    <h4 class="service-title color-scheme">Missão</h4>
+                    <p class="service-description justify">
+                        Identificar a necessidade tecnológica do nossos clientes, provendo soluções as suas demandas de
+                        conexão a
+                        internet de forma
+                        satisfatória, fornecendo produtos e serviços confiáveis .
+                    </p>
+                </div>
+            </div>
+            <!-- Single Service ends -->
+
+            <!-- Single Service Starts -->
+            <div class="col-md-6 col-sm-12 service animated" data-animation="fadeInRight" data-animation-delay="700">
+                <div class="service-desc">
+                    <h4 class="service-title color-scheme">Valores</h4>
+                    <p class="service-description justify">
+                        Honestidade e seriedade no relacionamento com clientes e fornecedores.
+                    </p>
+                    <p class="service-description justify">
+                        Foco na satisfação das necessidades dos clientes.
+                    </p>
+                    <p class="service-description justify">
+                        Busca contínua no aperfeiçoamento de métodos e processos.
+                    </p>
+                    <p class="service-description justify">
+                        Harmonia e Integração entre colaboradores
+                    </p>
+                    <p class="service-description justify">
+                        Desempenhar nossas atividades com competência e verdade.
+                    </p>
+                </div>
+            </div>
+            <!-- Single Service Ends -->
+        </div>
+    </div>
+</section>
+<!--=== Features section Starts ===-->
+<section id="section-feature" class="feature-wrap">
+    <div class="container features center">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--Features container Starts -->
+                <ul id="card-ul" class="features-hold baraja-container">
+                    @each(card in cards)
+                    <li class="single-feature" title="{{card.name}}">
+                        <!-- Single Feature Starts -->
+
+                        <img src="{{card.src}}" alt="" class="feature-image"/>
+                        <!-- Feature Icon -->
+                        <h4 class="feature-title color-scheme">{{card.name}}</h4>
+                        <p class="feature-text">
+                            {{card.name}}
+                        </p>
+
+                        <a id="cardDetailsButton" ng-click="changeCard($index, $event)" data-toggle="modal"
+                           data-target="#cardDetails" class="fancy-button button-line btn-col small vertical">
+                            Detalhes
+								<span class="icon">
+									<i class="fa fa-leaf"></i>
+								</span>
+                        </a>
+
+                    </li>
+                    @endeach
+                    <!-- Single Feature Ends -->
+                </ul>
+                <!--Features container Ends -->
+
+                <!-- Features Controls Starts -->
+                <div class="features-control relative">
+                    <button class="control-icon fancy-button button-line no-text btn-col bell" id="feature-prev"
+                            title="Previous">
+							<span class="icon">
+								<i class="fa fa-arrow-left"></i>
+							</span>
+                    </button>
+                    <button class="control-icon fancy-button button-line no-text btn-col zoom" id="feature-expand"
+                            title="Expand">
+							<span class="icon">
+								<i class="fa fa-expand"></i>
+							</span>
+                    </button>
+                    <button class="control-icon fancy-button button-line no-text btn-col zoom" id="feature-close"
+                            title="Collapse">
+							<span class="icon">
+								<i class="fa fa-compress"></i>
+							</span>
+                    </button>
+                    <button class="control-icon fancy-button button-line no-text btn-col bell" id="feature-next"
+                            title="Next">
+							<span class="icon">
+								<i class="fa fa-arrow-right"></i>
+							</span>
+                    </button>
+                </div>
+                <!-- Features Controls Ends -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="step-2" class="section-step step-even step-wrap">
+    <div class="container step">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 center section-title">
+                <h3>SERVIÇOS</h3>
+            </div>
+            <div class="col-md-3 service animated" data-animation="fadeInLeft" data-animation-delay="700">
+                <div class="center">
+                    <i class="icon icon-basic-bolt fa-5x"></i>
+                    <h3>Fibra Óptica</h3>
+                    <p class="service-description">
+                        Uma das tecnologias mais avançadas atualmente para transmissão de dados. Neste serviço você
+                        conta com qualidade
+                        e estabilidade.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 service animated" data-animation="fadeInUp" data-animation-delay="700">
+                <div class="center">
+                    <i class=" icon-basic-rss fa-5x"></i>
+                    <h3>Link Dedicado</h3>
+                    <p class="service-description">
+                        Hoje a Logar Telecom possui em seu datacenter 100% de link dedicado. o que oferece mais
+                        velocidade de Upload e
+                        estabilidade
+                        de conexão.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 service animated" data-animation="fadeInDown" data-animation-delay="700">
+                <div class="center">
+                    <i class="fa fa-briefcase fa-5x"></i>
+                    <h3>Corporativo</h3>
+                    <p class="service-description">
+                        Sua empresa contará com soluções tecnológicas em conexões para a internet e dados. Link
+                        Dedicado, IP fixo,
+                        interligação entre
+                        filiais.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 service animated" data-animation="fadeInRight" data-animation-delay="700">
+                <div class="center">
+                    <i class="fa fa-phone fa-5x"></i>
+                    <h3>Telefone Fixo</h3>
+                    <p class="service-description">
+                        A Logar Tecnologia disponibiliza para todos os seus clientes telefone fixo com ligações
+                        ilimitadas para todo
+                        Brasil. Confira
+                        nossos planos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=== Video section Starts ===-->
+<section id="section-video" class="section-video-wrap">
+    <div class="section-overlay"></div>
+    <div class="container big-video center animated" data-animation="fadeInLeft" data-animation-delay="700">
+        <div class="row">
+            <div class="col-md-12 section-title">
+                <h3>SUA INTERNET NÃO ESTÁ FUNCIONANDO?</h3>
+            </div>
+            <div class="col-md-10 col-md-offset-1 video-content">
+                <iframe src="https://www.youtube.com/embed/Set1ecrna_M" width="400" height="240"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=== Video section Ends ===-->
+
+<!--=== ScreenShots section Starts ===-->
+
+
+<!--=== ScreenShots section Ends ===-->
+
+<!--=== Pricing section Starts ===-->
+<section id="section-pricing" class="pricing-wrap">
+    <div class="container pricing">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 center section-title">
+                <h3>PLANOS & PREÇOS</h3>
+            </div>
+            <!-- Single Price Starts -->
+            <div class="col-md-3 col-sm-6 single-pricing-wrap center animated" data-animation="bounceInLeft"
+                 data-animation-delay="1500">
+                <div class="single-pricing">
+
+                    <div class="pricing-head">
+                        <h4 class="pricing-heading color-scheme">15 ou 20 Megas</h4>
+                        <div class="price">
+                            <h3>
+                                <span class="dollar">R$</span>
+                                60,00
+                                <span class="month">/Mensal</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <ul class="package-features">
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Link dedicado
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-close"></span>Não usa linha telefonica
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Sem limites de downloads
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Alta velocidade de Upload
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Suporte em horario Comecial
+                        </li>
+                    </ul>
+                    <div class="sign-up">
+                        <a href="#" class="fancy-button button-line btn-col zoom">
+                            Contrate
+								<span class="icon">
+									<i class="fa fa-thumbs-o-up"></i>
+								</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Price Ends -->
+
+
+            <!-- Single Price Starts -->
+            <div class="col-md-3 col-sm-6 single-pricing-wrap center animated" data-animation="bounceInLeft"
+                 data-animation-delay="2000">
+                <div class="single-pricing">
+
+                    <div class="pricing-head">
+                        <h4 class="pricing-heading color-scheme">25 ou 40 Megas</h4>
+                        <div class="price">
+                            <h3>
+                                <span class="dollar">R$</span>
+                                75,00
+                                <span class="month">/Mensal</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <ul class="package-features">
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Link dedicado
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-close"></span>Não usa linha telefonica
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Sem limites de downloads
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Alta velocidade de Upload
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Suporte em horario Comecial
+                        </li>
+                    </ul>
+                    <div class="sign-up">
+                        <a href="#" class="fancy-button button-line btn-col zoom">
+                            Contrate
+								<span class="icon">
+									<i class="fa fa-thumbs-o-up"></i>
+								</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Price Ends -->
+
+            <!-- Single Price Starts -->
+            <div class="col-md-3 col-sm-6 single-pricing-wrap center animated" data-animation="bounceInLeft"
+                 data-animation-delay="2500">
+                <div class="single-pricing">
+
+                    <div class="pricing-head">
+                        <h4 class="pricing-heading color-scheme">45 ou 60 Megas</h4>
+                        <div class="price">
+                            <h3>
+                                <span class="dollar">R$</span>
+                                95,00
+                                <span class="month">/Mensal</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <ul class="package-features">
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Link dedicado
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-close"></span>Não usa linha telefonica
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Sem limites de downloads
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Alta velocidade de Upload
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Suporte em horario Comecial
+                        </li>
+                    </ul>
+                    <div class="sign-up">
+                        <a href="#" class="fancy-button button-line btn-col zoom">
+                            Contrate
+								<span class="icon">
+									<i class="fa fa-thumbs-o-up"></i>
+								</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Price Ends -->
+
+            <!-- Single Price Starts -->
+            <div class="col-md-3 col-sm-6 single-pricing-wrap center animated" data-animation="bounceInLeft"
+                 data-animation-delay="3000">
+                <div class="single-pricing">
+
+                    <div class="pricing-head">
+                        <h4 class="pricing-heading color-scheme">Plano Empresarial </h4>
+                        <div class="price">
+                            <h3>
+                                <span class="dollar">R$</span>
+                                149,00
+                                <span class="month">/Mensal</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <ul class="package-features">
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Link dedicado
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-close"></span>Não usa linha telefonica
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Sem limites de downloads
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Alta velocidade de Upload
+                        </li>
+                        <li>
+                            <span class="color-scheme fa fa-check"></span>Suporte em horario Comecial
+                        </li>
+                    </ul>
+                    <div class="sign-up">
+                        <a href="#" class="fancy-button button-line btn-col zoom">
+                            Contrate
+								<span class="icon">
+									<i class="fa fa-thumbs-o-up"></i>
+								</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Price Ends -->
+
+        </div>
+    </div>
+</section>
+<!--=== Pricing section Ends ===-->
+
+<section id="section-contact" class="contact-wrap">
+    <div class="section-overlay"></div>
+    <div class="container contact center animated" data-animation="flipInY" data-animation-delay="1500">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-10 col-md-offset-1 center section-title">
+                    <h3>CONTATE-NOS</h3>
+                </div>
+
+                <div class="confirmation">
+                    <p>
+                        <span class="fa fa-check"></span>
+                    </p>
+                </div>
+
+                <form class="contact-form" ng-submit="sendContact(contact)">
+
+                    <div class="col-lg-12">
+                        <input id="name" class="input-field form-item field-name" type="text" required="required"
+                               name="contact-name"
+                               placeholder="Nome" ng-model="contact.name" ng-disabled="sending"/>
+
+                        <input id="text" class="input-field form-item field-phone" type="text" required="required"
+                               name="contact-phone"
+                               placeholder="Telefone" ng-model="contact.phone" ng-disabled="sending"/>
+
+                        <input id="email" class="input-field form-item field-email" type="email" required="required"
+                               name="contact-email"
+                               placeholder="Email" ng-model="contact.email" ng-disabled="sending"/>
+
+                        <input id="subject" class="input-field form-item field-subject" type="text" required="required"
+                               name="contact-subject"
+                               placeholder="Assunto" ng-model="contact.subject" ng-disabled="sending"/>
+
+							<textarea id="message" class="textarea-field form-item field-message" rows="5"
+                                      name="contact-message"
+                                      placeholder="Messagem" ng-model="contact.message"
+                                      ng-disabled="sending"></textarea>
+                    </div>
+                    <div class="col-lg-12" ng-if="error">
+                        <div class="alert alert-danger text-center"><i class="fa fa-close"></i> Ocorreu um erro ao
+                            enviar mensagem!
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="success">
+                        <div class="alert alert-success text-center"><i class="fa fa-check"></i>Mensagem enviada com
+                            sucesso!
+                        </div>
+                    </div>
+                    <button type="submit" class="fancy-button button-line button-white large zoom subform"
+                            ng-disabled="sending">
+							<span ng-if="!sending"> Enviar Mensagem
+                                <span class="icon">
+                                    <i class="fa fa-paper-plane-o"></i>
+                                </span>
+                            </span>
+                            <span ng-if="sending"> Enviando Mensagem
+                                <span class="icon">
+                                    <i class="fa fa-spin fa-spinner"></i>
+                                </span>
+                            </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=== Services section Ends ===-->
+<!--=== Footer section Starts ===-->
+<div id="section-footer" class="footer-wrap">
+    <div class="container footer center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="footer-title">
+                    <!-- Footer Title -->
+                    <a class="site-name" href="#">
+                        <img src="/logotipo-logar-white.png" alt="" class="logo-image"/>
+                    </a>
+                </h4>
+
+                <!-- Social Links -->
+                <div class="social-icons">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="copyright">Todos os direitos reservados &copy; 2019</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<div class="modal fade" id="cardDetails" tabindex="-1" role="dialog" aria-labelledby="cardDetailsCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Detalhes do <span style="font-weight: bold">{{cards[cardDetails].name}}</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="font-size:30px;">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <p>{{cards[cardDetails].description}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--=== Footer section Ends ===-->
+
+<!--==== Js files ====-->
+<!--==== Essential files ====-->
+{{script('js/jquery-1.11.1.min.js')}}
+{{script('js/bootstrap.min.js')}}
+{{script('js/bootstrapValidator.min.js')}}
+{{script('js/modernizr.js')}}
+{{script('js/jquery.easing.1.3.js')}}
+{{script('js/jquery.baraja.js')}}
+{{script('js/jquery.vegas.min.js')}}
+{{script('js/jquery.bxslider.min.js')}}
+{{script('js/jquery.nicescroll.min.js')}}
+{{script('js/jquery.nav.js')}}
+{{script('js/jquery.appear.js')}}
+{{script('js/jquery.fitvids.js')}}
+{{script('js/custom.js')}}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script>
+
+
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function ($scope, $http) {
+
+        $scope.searching = false;
+        $scope.error = false;
+        $scope.success = false;
+        $scope.billets = null;
+        $scope.contact = {
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: ''
+        };
+
+        $scope.user = {name: '', cpf_cnpj: ''};
+
+        $scope.cardDetails = 0;
+        $scope.changeCard = function (newIndex, $event) {
+
+            $scope.cardDetails = newIndex;
+
+        };
+
+
+        $scope.clear = function () {
+            $scope.sending = false;
+            $scope.searching = false;
+            $scope.error = false;
+            $scope.billets = null;
+            $scope.user = {name: '', cpf_cnpj: ''};
+            $scope.contact = {
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: ''
+            };
+        };
+
+//        $scope.verify = function (user) {
+//            $scope.sending = true;
+//            $http({
+//                method: "POST",
+//                url: "https://logartelecom.net/grant_api/public/api/clients/getBillet",
+//                data: user
+//            }).then(function mySuccess(response) {
+//                $scope.sending = false;
+//                $scope.billets = response.data;
+//            }, function myError(response) {
+//                $scope.sending = false;
+//                $scope.error = true;
+//            });
+//        };
+
+        $scope.sendContact = function (contact) {
+            $scope.sending = true;
+            $scope.error = false;
+            $http({
+                method: "POST",
+                url: "/sendContact",
+                data: contact
+            }).then(function mySuccess(response) {
+                $scope.success = true;
+                setTimeout(function () {
+                    $scope.success = false;
+                }, 3000);
+                $scope.clear();
+            }, function myError(response) {
+                $scope.sending = false;
+                $scope.error = true;
+            });
+        };
+
+
+//        $scope.downloadBillet = function (billet) {
+//            $('#' + billet).html('<i class="fa fa-spinner fa-spin"></i> Baixando');
+//            $('#' + billet).attr('disabled', true);
+//            $http({
+//                method: "POST",
+//                url: "https://logartelecom.net/grant_api/public/api/clients/getPdfBillet",
+//                data: {id: billet},
+//                headers: {
+//                    'Content-Type': 'application/json',
+//                    'Accept': 'application/pdf'
+//                },
+//                responseType: 'arraybuffer'
+//            }).then(function mySuccess(response) {
+//                $scope.createFile(response.data);
+//                $('#' + billet).html('<i class="fa fa-download"></i> Boleto');
+//                $('#' + billet).attr('disabled', false);
+//            }, function myError(response) {
+//                $('#' + billet).html('<i class="fa fa-download"></i> Boleto');
+//                $('#' + billet).attr('disabled', false);
+//            });
+//
+//            $scope.createFile = function (data) {
+//                var file = new Blob([data], {type: 'application/pdf'}),
+//                        url = (window.URL || window.webkitURL).createObjectURL(file),
+//                        a = document.createElement('a');
+//
+//                document.getElementsByTagName("body")[0].appendChild(a);
+//
+//                a.href = url;
+//                a.download = 'boleto.pdf';
+//                a.target = '_blank';
+//                a.click();
+//            };
+//
+//
+//        };
+    });
+</script>
+</body>
+
 </html>

@@ -105,8 +105,8 @@ module.exports = {
         // socketTimeoutMS: Env.get('DB_SOCKET_TIMEOUT_MS', 180000),
         // w: Env.get('DB_W, 0),
         // readPreference: Env.get('DB_READ_PREFERENCE', 'secondary'),
-        authSource: Env.get('DB_AUTH_SOURCE', 'admin'),
-        authMechanism: Env.get('DB_AUTH_MECHANISM', 'SCRAM-SHA-1')
+        // authSource: Env.get('DB_AUTH_SOURCE', 'admin'),
+        // authMechanism: Env.get('DB_AUTH_MECHANISM', 'SCRAM-SHA-1')
         // other options
       }
     }
